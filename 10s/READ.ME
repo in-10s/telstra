@@ -1,1 +1,34 @@
+# Running the microservices in local :
+a) To run the microservice in local first active the profile that you want to run in all the project 
+b) and then run all the project from run as spring boot application
 
+# Microservice calls
+  There are two microservice running on diff. diff. ports 
+  * To test the api from postman use the below api that is common api to be used for all the microservices
+  # for user management microservice 
+  --------------------
+ => api : localhost:1111/user-management/all-user-details
+  request type : GET
+  
+ => api : localhost:1111/user-management/save
+  request type : POST
+  request Payload : 
+  {
+	"loginName":"Abhishek",
+	"password":"abc",
+	"firstName":"xyz",
+	"middleName":"qqq",
+	"lastName":"kkk",
+	"emailId":"amarcs11101@gmail.com",
+	"phoneNo":"9898989898",
+	"role":"ADMIN",
+	"landingPage":"abc",
+	"companyName":"XYZ",
+	"userStatus":0 
+}
+  
+  
+  # for common microservice
+  ----------------
+  => api : localhost:1111/common/country/1
+      request type : GET
