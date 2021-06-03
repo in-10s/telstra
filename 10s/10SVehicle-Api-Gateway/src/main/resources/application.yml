@@ -1,0 +1,41 @@
+server:
+  port: 8081
+spring:
+  cloud:
+     gateway:
+      discovery :
+       locator:
+        enabled: true
+      routes: 
+      - id: user-management
+        uri: http://localhost:2222/
+        predicates:
+        - Path=/user-management/** 
+        
+      - id: common-service
+        uri: http://localhost:2223/
+        predicates:
+        - Path=/common-service/**
+         
+security:
+    oauth2:
+      client:
+        registration:
+          gateway:
+            provider: uaa
+            client-id: gateway
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri-template: "http://localhost:9999/authenticate"
+            scope: openid,profile,email,resource.read
+        provider:
+          uaa:
+            authorization-uri: http://localhost:9999/authenticate
+            token-uri: http://localhost:9999/authenticate
+            user-info-uri: http://localhost:9999/authenticate
+            user-name-attribute: sub
+            jwk-set-uri: http://localhost:9999/authenticate
+
+        
+        
+         
