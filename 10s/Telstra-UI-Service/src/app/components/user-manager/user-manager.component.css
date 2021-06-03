@@ -1,0 +1,24 @@
+  .mrgleftless80 {margin-left:-80px !important;}
+            #users_grid > div.k-grid-content{height:  79% !important;}
+            .breadcrump ul li {
+                float: left;
+                display: inline;
+                color: rgb(51, 51, 51);
+                font-size: 12px;
+                padding: 10px;
+            }
+
+            .breadcrump ul li.youarehere {
+                padding-left: 0px;
+            }
+
+            .breadcrump ul {
+                clear: both;
+                margin: 0px;
+                padding: 0px;
+            }
+
+            .breadcrump {
+                clear: both;
+                padding-left: 15px;
+            }

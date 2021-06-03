@@ -1,0 +1,356 @@
+<body onload="initusermanager();">
+  <div class="clear"></div>
+  <!--main section starts here-->
+  <section id="main" role="main" class="margintopless-6">
+    <div class="panel-body documentviebg">
+      <div class="breadcrump pad10L">
+        <ul>
+          <li class="youarehere">You are here: </li>
+          <li><a href="/">Home</a> / User Manager</li>
+        </ul>
+      </div>
+      <div class="clear"></div>
+      <div id="txt"></div>
+      <div class="mrg0L mrg5T left">
+        <h1 class="vl">User Manager</h1>
+      </div>
+      <div class="right pad10T pad15R"><a href="#" data-toggle="modal" data-target="#divAdd" class="primarybt"
+          onclick="createuserbtn();">Create User</a></div>
+      <div class="clear mrg20B"></div>
+
+      <div class="row clearfix mainsection pad0L">
+
+        <div class="col-xs-12">
+          <div class="whtiebg">
+            <!-- <div id="" **ngFor="let item of columns">
+              <h1 **ngIf="!item.hidden">{{item.field}}</h1>
+            </div> -->
+            <div class="col-md-12 pad0A">
+              <div _ngcontent-stu-c46="" class="row clearfix mainsection pad0L">
+                <div _ngcontent-stu-c46="" class="col-xs-12">
+                  <div _ngcontent-stu-c46="" class="whtiebg">
+                    <!--container-->
+                    <div _ngcontent-stu-c46="" class="col-md-12 pad0A">
+                      <div _ngcontent-stu-c46="" data-role="grid" style="height: 440px;">
+                        <div class="k-grid-header" style="padding-right: 0px;">
+                          <div class="k-grid-header-wrap k-auto-scrollable" data-role="resizable">
+                            <table role="grid">
+                              <colgroup>
+                                <col style="width:190px">
+                                <col style="width:190px">
+                                <col style="width:190px">
+                              </colgroup>
+                              <thead role="rowgroup">
+                                <tr role="row">
+                                  <th scope="col"  *ngFor="let item of columns">
+                                    <a><span class="k-icon k-i-more-vertical"></span></a><a class="k-link" href="#" **ngIf="!item.hidden">111{{item.field}}</a>
+                                  </th>
+                                </tr>
+                              </thead>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="k-grid-content k-auto-scrollable km-widget km-native-scroller" data-role="scroller"
+                          style="height: 348px;">
+                          <div class="km-scroll-header"></div>
+                          <table role="grid" style="height: auto;">
+                            <colgroup>
+                              <col style="width:190px">
+                              <col style="width:190px" class="k-sorted">
+                              <col style="width:190px">
+                            </colgroup>
+                            <tbody role="rowgroup" *ngFor="let item of userDetailList let i = index">{{item|json}}</tbody>
+                          </table>
+                          <div class="k-grid-content-expander" style="width: 862px;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- main section ends -->
+
+
+  <!------Popup starts --->
+
+
+
+
+
+
+  <!--Delete Popup div starts-->
+
+  <div id="divDelete" class="modal  fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h2 class="modal-title">Delete</h2>
+        </div>
+        <div class="modal-body text-center">
+          <div class="pad10T pad10B"> Are you sure you want to delete this User?</div>
+          <div class="clear marginbottom10"></div>
+          <div class="form-group text-center mtop10">
+            <button type="submit" id="deleteid" class="primarybt" data-dismiss="modal" onclick="deleteUserDetails();">
+              Yes </button>
+            <button type="submit" class="secondarybt" data-dismiss="modal"> No </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Add Popup div starts-->
+  <div id="divAdd" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h2 class="modal-title">Create User</h2>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="userForm">
+            <div class="col-sm-6">
+              <div class="lablewidth1"><label>Login Name <span class="red">*</span></label>
+                <input type="text" id="login_name" class="form-control" formControlName="loginName">
+              </div>
+
+              <div class="lablehelp1"><a class="hint--left" href="javascript:void(0)"><i class="help_ic"
+                    title="Help"></i></a></div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="lablewidth1"><label>Password <span class="red">*</span></label>
+                <input type="password" id="password" class="form-control" formControlName="password" value="">
+              </div>
+              <span id="pwdval" style="display:none;color: red"></span>
+              <div class="lablehelp1"><a class="hint--left" href="javascript:void(0)"><i class="help_ic"
+                    title="Help"></i></a></div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="lablewidth1"><label>First Name <span class="red">*</span></label>
+                <input type="text" id="first_name" class="form-control" formControlName="firstName" value="">
+              </div>
+              <span id="fnval" style="display:none;color: red"></span>
+              <div class="lablehelp1"><a class="hint--left" href="javascript:void(0)"><i class="help_ic"
+                    title="Help"></i></a></div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="lablewidth1"> <label>Middle Name </label>
+                <input type="text" id="middle_name" class="form-control" formControlName="secondName" value="">
+              </div>
+              <span id="mnval" style="display:none;color: red"></span>
+              <div class="lablehelp1"><a class="hint--left" href="javascript:void(0)"><i class="help_ic"
+                    title="Help"></i></a></div>
+            </div>
+            <div class="col-sm-6">
+              <div class="lablewidth1"> <label>Last Name <span class="red">*</span></label>
+                <input type="text" id="last_name" class="form-control" formControlName="lastName" value="">
+              </div>
+              <span id="lnval" style="display:none;color: red"></span>
+              <div class="lablehelp1"><a class="hint--left" href="javascript:void(0)"><i class="help_ic"
+                    title="Help"></i></a></div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="lablewidth1"><label>Email ID <span class="red">*</span></label>
+                <input type="email" id="email_id" class="form-control" formControlName="emailID">
+              </div>
+              <span id="emval" style="display:none;color: red"></span>
+              <div class="lablehelp1"><a class="hint--left" href="javascript:void(0)"><i class="help_ic"
+                    title="Help"></i></a></div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="lablewidth1"><label>Phone No. <span class="red">*</span></label>
+                <input type="text" class="form-control" id="mobile_no" formControlName="phoneNumber" value="">
+              </div>
+              <span id="phnval" style="display:none;color: red"></span>
+              <div class="lablehelp1"><a class="hint--left" href="javascript:void(0)"><i class="help_ic"
+                    title="Help"></i></a></div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="lablewidth1"><label>Role <span class="red">*</span></label>
+                <select formControlName="role" id="rolelist" class="form-control" onchange="loadLandingPage();">
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="lablewidth1"><label>Landing Page <span class="red">*</span></label>
+                <select formControlName="landingPage" id="landingPage" class="form-control">
+                  <option value="0">Select Landing Page</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="lablewidth1"><label>Company List<span class="red">*</span></label>
+                <select formControlName="companyName" id="company_name" class="form-control"
+                  onchange="loadDepartment();">
+                  <option value="0">Select Company Name</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-sm-6" style="display:none" id="DepartDiv">
+              <div class="lablewidth1"><label>Department</label>
+                <select formControlName="department" id="Department" class="form-control">
+                  <option value="0">Select Department</option>
+                </select>
+              </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-sm-6">
+              <label>User status</label>
+              <div>
+                <div id="buttonhd" class="leftrightboxradius">
+                  <ul>
+                    <li class="leftboxradius"><a class="buttonhdbtov" id="activeid" href="javascript:void(0)">Active</a>
+                    </li>
+                    <li class="rightboxradius"><a class="buttonhdbt" href="javascript:void(0)">Inactive</a></li>
+                  </ul>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="col-sm-12">
+              <div class="lablewidth1"><label>User Type: <span class="red">*</span></label>
+                <input type="radio" formControlName="userType" value="1" style="opacity:unset !important;" checked>Admin
+                User
+                <input type="radio" formControlName="userType" value="2" style="opacity:unset !important;">EnterPrise
+                User<br>
+              </div>
+            </div>
+
+
+            <div class="lablehelp1"><a class="hint--left" data-hint="Lorem ipsum dolor sit amet."
+                href="javascript:void(0)"><i class="help_ic" title="Help"></i></a></div>
+
+
+            <div class="clear marginbottom10"></div>
+            <div><span id="unexists" style="display:none;color: red">Login Name Already Exists</span></div>
+            <div class="form-group align-center  pad20L pad25B">
+              <button type="button" class="primarybt" id="createbtn" (click)="saveUser()">Submit</button>
+              <button type="button" class="secondarybt" data-dismiss="modal">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--Add Popup div ends-->
+
+    <!--Edit cost code Popup div starts-->
+    <div id="divEdit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h2 class="modal-title">Edit User</h2>
+          </div>
+          <div class="modal-body">
+
+            <form id="edituserfrm">
+              <div class="col-sm-6">
+                <div class="lablewidth1"><label>Login Name <span class="red">*</span></label>
+                  <input type="text" id="login_name1" class="form-control" name="Login Name" value="" readonly="true">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="lablewidth1"><label>First Name <span class="red">*</span></label>
+                  <input type="text" id="first_name1" class="form-control" name="First Name" value="">
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="lablewidth1"> <label>Middle Name </label>
+                  <input type="text" id="middle_name1" class="form-control" name="Second Name" value="">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="lablewidth1"> <label>Last Name <span class="red">*</span></label>
+                  <input type="text" id="last_name1" class="form-control" name="Second Name" value="">
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="lablewidth1"><label>Email ID <span class="red">*</span></label>
+                  <input type="text" id="email_id1" class="form-control" name="Email ID">
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="lablewidth1"><label>Phone No. <span class="red">*</span></label>
+                  <input type="text" class="form-control" id="mobile_no1" name="Mobile Number" value="">
+                </div>
+              </div>
+
+
+
+              <div class="col-sm-6">
+                <div class="lablewidth1"><label>Role <span class="red">*</span></label>
+                  <select name="example-select" id="rolelist1" class="form-control">
+
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="lablewidth1"><label>Landing Page <span class="red">*</span></label>
+                  <select name="example-select" id="landingEditPage" class="form-control">
+                    <option value="0">Select Landing Page</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label>User status</label>
+                <div>
+                  <div id="buttonhd2" class="leftrightboxradius">
+                    <ul>
+                      <li class="leftboxradius"><a class="buttonhdbtov" id="activeid2"
+                          href="javascript:void(0)">Active</a> </li>
+                      <li class="rightboxradius"><a class="buttonhdbt" id="inactiveid2"
+                          href="javascript:void(0)">Inactive</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+
+
+
+              </div>
+
+              <div class="col-sm-12">
+                <div class="lablewidth1"><label>User Type: <span class="red">*</span></label>
+                  <input type="radio" name="user_type_edit" value="1" style="opacity:unset !important;">Admin User
+                  <input type="radio" name="user_type_edit" value="2" style="opacity:unset !important;">EnterPrise
+                  User<br>
+                </div>
+              </div>
+              <div class="clear marginbottom10"></div>
+              <div><span id="unexists1" style="display:none;color: red"></span></div>
+              <div class="form-group align-center pad5L">
+                <button type="button" class="primarybt" onclick="updateuserdetails();">Submit</button>
+                <button type="button" class="secondarybt" data-dismiss="modal">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Edit cost code Popup div ends-->
