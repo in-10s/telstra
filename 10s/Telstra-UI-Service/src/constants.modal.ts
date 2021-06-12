@@ -9,4 +9,5 @@ export class Constants{
   public static USER_MANAGEMENT_MICROSERVICE:string="/user-management";
   public static USER_MANAGEMENT_MICROSERVICE_SAVE: string="/save"
   public static USER_MANAGEMENT_MICROSERVICE_ALLUSERDETAILS: string ="/all-user-details";
+  public static USER_MANAGEMENT_MICROSERVICE_ROLES_DETAILS: string ="/roles-list";
 }

@@ -10,6 +10,7 @@ import { UserManagerService } from './user-manager.service';
 export class UserManagerComponent implements OnInit {
   userForm: FormGroup;
   userDetailList:any;
+  roleDetails: any;
   constructor(private userManagementService: UserManagerService ) {
     this.userForm = new FormGroup({
       'loginName' : new FormControl('', Validators.required),
@@ -62,6 +63,7 @@ export class UserManagerComponent implements OnInit {
 
   ngOnInit(): void {
   this.getUserDetails();
+  this.getRolesList();
   }
 
   saveUser(){
@@ -82,6 +84,12 @@ export class UserManagerComponent implements OnInit {
         console.log("::got user details data ::"+JSON.stringify(data))
         this.userDetailList=data;
      });
+  }
+
+  getRolesList(){
+  this.userManagementService.getRolesList().subscribe((data)=>{
+      this.roleDetails = data;
+  });
   }
 
 }

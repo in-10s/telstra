@@ -61,7 +61,11 @@ public class UserManagementController {
 			throw new UserCustomExceptions(somethingWentWrong);
 		}
 	}
-	
+
+	/**
+	 *
+	 * @return
+	 */
 	@GetMapping("/all-user-details")
 	public ResponseEntity<Object> getAllUserDetails() {
 		try {  
@@ -69,6 +73,21 @@ public class UserManagementController {
 			return new ResponseEntity<>(userService.getAllUserDetails(), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(":: /all-user-details :: getAllUserDetails ::", e);
+			throw new UserCustomExceptions(somethingWentWrong);
+		}
+	}
+
+	/***
+	 *
+	 * @return
+	 */
+	@GetMapping("roles-list")
+	public ResponseEntity<Object> getRole(){
+		try{
+			logger.info(":: /roles-list :: getRole ::");
+			return new ResponseEntity<>(userService.getAllRole(), HttpStatus.OK);
+		}catch(Exception e){
+			logger.error(":: /roles-list :: getRole ::", e);
 			throw new UserCustomExceptions(somethingWentWrong);
 		}
 	}

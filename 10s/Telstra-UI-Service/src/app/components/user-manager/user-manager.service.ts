@@ -22,4 +22,8 @@ export class UserManagerService {
   public getUserDetails(){
    return this.httpClient.get(Constants.CONTEXT_PATH+Constants.USER_MANAGEMENT_MICROSERVICE+Constants.USER_MANAGEMENT_MICROSERVICE_ALLUSERDETAILS);
  }
+
+ public getRolesList(){
+    return this.httpClient.get(Constants.CONTEXT_PATH+Constants.USER_MANAGEMENT_MICROSERVICE+Constants.USER_MANAGEMENT_MICROSERVICE_ROLES_DETAILS);
+  }
 }

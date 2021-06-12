@@ -186,6 +186,8 @@
             <div class="col-sm-6">
               <div class="lablewidth1"><label>Role <span class="red">*</span></label>
                 <select formControlName="role" id="rolelist" class="form-control" onchange="loadLandingPage();">
+                    <option >Select Role</option>
+                    <option *ngFor="let list of this.roleDetails" [id]="list.roleId">{{list.roleName}}</option>
                 </select>
               </div>
             </div>
