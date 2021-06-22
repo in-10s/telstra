@@ -27,6 +27,7 @@ public class Util {
 		response.setPassword("pwd");
 		response.setPhoneNo("9876656569");
 		response.setRole("ADMIN");
+		response.setId(100);
 		response.setUserStatus(UserStatus.ACTIVE);
 		responseList.add(response);
 		return responseList;

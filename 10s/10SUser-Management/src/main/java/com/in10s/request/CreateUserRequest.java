@@ -23,7 +23,10 @@ public class CreateUserRequest implements Serializable {
 	private String landingPage;
 	private String companyName;
 	private UserStatus userStatus;
-
+	private String moduleName;
+	private Integer userType;
+	private Integer id;
+	private Integer userId;
 	public String getLoginName() {
 		return loginName;
 	}
@@ -112,12 +115,56 @@ public class CreateUserRequest implements Serializable {
 		this.userStatus = userStatus;
 	}
 
-	@Override
-	public String toString() {
-		return "CreateUserRequest [loginName=" + loginName + ", password=" + password + ", firstName=" + firstName
-				+ ", middleName=" + middleName + ", lastName=" + lastName + ", emailId=" + emailId + ", phoneNo="
-				+ phoneNo + ", role=" + role + ", landingPage=" + landingPage + ", companyName=" + companyName
-				+ ", userStatus=" + userStatus + "]";
+	public String getModuleName() {
+		return moduleName;
 	}
 
+	public void setModuleName(String moduleName) {
+		this.moduleName = moduleName;
+	}
+
+	public Integer getUserType() {
+		return userType;
+	}
+
+	public void setUserType(Integer userType) {
+		this.userType = userType;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public String toString() {
+		return "CreateUserRequest{" +
+				"loginName='" + loginName + '\'' +
+				", password='" + password + '\'' +
+				", firstName='" + firstName + '\'' +
+				", middleName='" + middleName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", emailId='" + emailId + '\'' +
+				", phoneNo='" + phoneNo + '\'' +
+				", role='" + role + '\'' +
+				", landingPage='" + landingPage + '\'' +
+				", companyName='" + companyName + '\'' +
+				", userStatus=" + userStatus +
+				", moduleName='" + moduleName + '\'' +
+				", userType='" + userType + '\'' +
+				", id=" + id +
+				", userId="+userId+
+				'}';
+	}
 }

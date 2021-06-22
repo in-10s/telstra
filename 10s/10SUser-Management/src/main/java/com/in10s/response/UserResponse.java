@@ -27,7 +27,7 @@ public class UserResponse implements Serializable {
 	private String landingPage;
 	private String companyName;
 	private UserStatus userStatus;
-
+	private Integer id;
 	public String getLoginName() {
 		return loginName;
 	}
@@ -116,12 +116,29 @@ public class UserResponse implements Serializable {
 		this.userStatus = userStatus;
 	}
 
-	@Override
-	public String toString() {
-		return "CreateUserRequest [loginName=" + loginName + ", password=" + password + ", firstName=" + firstName
-				+ ", middleName=" + middleName + ", lastName=" + lastName + ", emailId=" + emailId + ", phoneNo="
-				+ phoneNo + ", role=" + role + ", landingPage=" + landingPage + ", companyName=" + companyName
-				+ ", userStatus=" + userStatus + "]";
+	public Integer getId() {
+		return id;
 	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "UserResponse{" +
+				"loginName='" + loginName + '\'' +
+				", password='" + password + '\'' +
+				", firstName='" + firstName + '\'' +
+				", middleName='" + middleName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", emailId='" + emailId + '\'' +
+				", phoneNo='" + phoneNo + '\'' +
+				", role='" + role + '\'' +
+				", landingPage='" + landingPage + '\'' +
+				", companyName='" + companyName + '\'' +
+				", userStatus=" + userStatus +
+				", id=" + id +
+				'}';
+	}
 }

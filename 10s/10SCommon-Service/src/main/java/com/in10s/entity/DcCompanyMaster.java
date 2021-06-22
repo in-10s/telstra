@@ -5,9 +5,7 @@ package com.in10s.entity;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author Abhishek Amar
@@ -17,6 +15,7 @@ import javax.persistence.Table;
 @Table(name = "DC_COMPANY_MASTER")
 public class DcCompanyMaster {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer COMPANY_ID;
 	private String COMPANY_NAME;
 	private String COPANY_ADDRESS;

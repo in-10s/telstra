@@ -24,8 +24,8 @@ public class SwaggerConfiguration {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.abhishek.amar.controller"))
-				.paths(PathSelectors.ant("/customer/**")).build();
+				.apis(RequestHandlerSelectors.basePackage("com.in10s.*"))
+				.paths(PathSelectors.ant("/common/**")).build();
 	}
 
 }

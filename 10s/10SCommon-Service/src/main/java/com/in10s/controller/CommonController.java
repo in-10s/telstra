@@ -25,7 +25,6 @@ import com.in10s.service.CommonService;
  *
  */
 @RestController
-@CrossOrigin("*")
 @RequestMapping(value = "/common")
 public class CommonController {
 	private Logger logger = LogManager.getLogger();

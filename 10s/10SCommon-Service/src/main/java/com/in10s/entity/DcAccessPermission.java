@@ -3,9 +3,7 @@
  */
 package com.in10s.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author Abhishek Amar
@@ -15,6 +13,7 @@ import javax.persistence.Table;
 @Table(name = "DC_ACCESS_PERMISSION")
 public class DcAccessPermission {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer U_ID;
 	private Integer CC_ID;
 	private String ACCOUNT_NO;
