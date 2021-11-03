@@ -39,9 +39,8 @@ public class UserManagementController {
 	private String somethingWentWrong;
 
 	@Value("${user.id.not.avaibale}")
-	private String invalidIdMessage;
-	private Logger logger = LogManager.getLogger();
-	
+	private String invalidIdMessage; 
+	private static final Logger LOG = Logger.getLogger(UserManagementController.class.getName());
 	@Autowired
 	private UserService userService;
 
