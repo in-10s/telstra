@@ -40,7 +40,7 @@ public class UserManagementController {
 
 	@Value("${user.id.not.avaibale}")
 	private String invalidIdMessage; 
-	private static final Logger LOG = Logger.getLogger(UserManagementController.class.getName());
+	private static final Logger logger = Logger.getLogger(UserManagementController.class.getName());
 	@Autowired
 	private UserService userService;
 
