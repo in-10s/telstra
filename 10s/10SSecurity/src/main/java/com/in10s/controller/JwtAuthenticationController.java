@@ -15,7 +15,7 @@ import com.in10s.config.JwtTokenUtil;
 import com.in10s.request.JwtRequest;
 import com.in10s.response.JwtResponse;
 import com.in10s.service.JwtUserDetailsService; 
-
+import org.apache.log4j.Logger;
 @CrossOrigin(origins = "*")
 @RestController
 public class JwtAuthenticationController {
@@ -28,10 +28,10 @@ public class JwtAuthenticationController {
 
 	@Autowired
 	private JwtUserDetailsService userDetailsService;
-
+	private static final Logger LOG = Logger.getLogger(JwtAuthenticationController.class.getName());
 	@PostMapping(value="/authenticate")
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
-		System.out.println(authenticationRequest.getUsername() +" **** "+authenticationRequest.getPassword());
+		LOG.info(authenticationRequest.getUsername() +" **** "+authenticationRequest.getPassword());
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
 		final UserDetails userDetails = userDetailsService
@@ -46,8 +46,10 @@ public class JwtAuthenticationController {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		} catch (DisabledException e) {
+			LOG.error(e);
 			throw new Exception("USER_DISABLED", e);
 		} catch (BadCredentialsException e) {
+			LOG.error(e);
 			throw new Exception("INVALID_CREDENTIALS", e);
 		}
 	}
